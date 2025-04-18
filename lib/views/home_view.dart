@@ -1,0 +1,111 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_quote/core/utils/platform_utils.dart';
+import 'package:flutter_quote/viewModels/quote_view_model.dart';
+import 'package:flutter_quote/views/widgets/quote_container_widget.dart';
+
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  final _quoteController = TextEditingController();
+  final _authorController = TextEditingController();
+  final _quoteViewModel = QuoteViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    _initQuotes();
+  }
+
+  Future<void> _initQuotes() async {
+    await _quoteViewModel.loadQuotes();
+    _updateTextControllers();
+
+    _quoteViewModel.addListener(_updateTextControllers);
+  }
+
+  // listener
+  void _updateTextControllers() {
+    if (_quoteViewModel.currentQuote != null) {
+      setState(() {
+        _quoteController.text = _quoteViewModel.currentQuote!.text;
+        _authorController.text = _quoteViewModel.currentQuote!.author;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _quoteController.dispose();
+    _authorController.dispose();
+    _quoteViewModel.removeListener(_updateTextControllers);
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Flutter Quote')),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              // mainAxisSize: MainAxisSize.min,
+              children: [
+                QuoteContainerWidget(
+                  labelText: 'Quote:',
+                  controller: _quoteController,
+                  onPressed: () {
+                    _quoteViewModel.copyQuoteText();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Quote copied to clipboard')),
+                    );
+                  },
+                ),
+                SizedBox(height: 8),
+                QuoteContainerWidget(
+                  labelText: 'Author',
+                  controller: _authorController,
+                  onPressed: () {
+                    _quoteViewModel.copyQuoteAuthor();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Author copied to clipboard')),
+                    );
+                  },
+                ),
+                Expanded(child: Container()),
+                SizedBox(height: 24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        _quoteViewModel.getRandomQuote();
+                      },
+                      child: Text('New Quote'),
+                    ),
+                    // SizedBox(width: 8),
+                    if (!PlatformUtils.isWeb())
+                      ElevatedButton(
+                        onPressed: () {
+                          exit(0);
+                        },
+                        child: Text('Quit'),
+                      ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
