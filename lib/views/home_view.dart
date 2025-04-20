@@ -50,6 +50,8 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(title: Text('Flutter Quote')),
       body: LayoutBuilder(
@@ -86,6 +88,18 @@ class _HomeViewState extends State<HomeView> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            isDark
+                                ? theme.colorScheme.primaryContainer
+                                : theme.colorScheme.primary,
+                        foregroundColor:
+                            isDark
+                                ? theme
+                                    .colorScheme
+                                    .onSurface // Dark theme foreground
+                                : theme.colorScheme.onTertiary,
+                      ),
                       onPressed: () {
                         _quoteViewModel.getRandomQuote();
                       },
@@ -94,6 +108,18 @@ class _HomeViewState extends State<HomeView> {
                     // SizedBox(width: 8),
                     if (!PlatformUtils.isWeb())
                       ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              isDark
+                                  ? theme.colorScheme.secondary
+                                  : theme.colorScheme.secondary,
+                          foregroundColor:
+                              isDark
+                                  ? theme
+                                      .colorScheme
+                                      .onSecondary // Dark theme foreground
+                                  : theme.colorScheme.onTertiary,
+                        ),
                         onPressed: () {
                           exit(0);
                         },

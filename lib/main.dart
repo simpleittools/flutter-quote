@@ -1,5 +1,6 @@
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_quote/core/theme/theme.dart';
 import 'package:flutter_quote/core/utils/platform_utils.dart';
 import 'package:flutter_quote/views/home_view.dart';
 import 'package:window_size/window_size.dart';
@@ -22,9 +23,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Quote',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: darkTheme,
+      darkTheme: darkTheme,
       home: HomeView(),
     );
   }
