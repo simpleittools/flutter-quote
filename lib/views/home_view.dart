@@ -111,8 +111,8 @@ class _HomeViewState extends State<HomeView> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
                               isDark
-                                  ? theme.colorScheme.secondary
-                                  : theme.colorScheme.secondary,
+                                  ? theme.colorScheme.secondaryContainer
+                                  : theme.colorScheme.secondaryContainer,
                           foregroundColor:
                               isDark
                                   ? theme
@@ -127,6 +127,8 @@ class _HomeViewState extends State<HomeView> {
                       ),
                   ],
                 ),
+                // add for buffer space at the bottom of mobile
+                if (PlatformUtils.isMobile()) SizedBox(height: 32),
               ],
             ),
           );

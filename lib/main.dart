@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Quote',
-      theme: darkTheme,
-      darkTheme: darkTheme,
+      theme: lightTheme,
+      darkTheme: lightTheme,
       home: HomeView(),
     );
   }

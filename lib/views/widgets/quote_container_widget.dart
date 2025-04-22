@@ -22,11 +22,11 @@ class QuoteContainerWidget extends StatelessWidget {
           child: Container(
             constraints: BoxConstraints(minHeight: 56),
             decoration: BoxDecoration(
-              // TODO: Set to theme color
-              border: Border.all(color: Colors.grey),
+              border: Border.all(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
               borderRadius: BorderRadius.circular(4),
-              // TODO: Set to theme color
-              color: Colors.grey[50],
+              color: Theme.of(context).colorScheme.surface,
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
@@ -34,8 +34,7 @@ class QuoteContainerWidget extends StatelessWidget {
                 controller.text,
                 style: TextStyle(
                   fontSize: 16,
-                  // TODO: Set to theme color
-                  color: Colors.black,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
                 // enable text wrapping
                 maxLines: null,
