@@ -19,7 +19,7 @@ class QuoteViewModel extends ChangeNotifier {
     try {
       // get the quotes from the assets directory
       final String jsonString = await rootBundle.loadString(
-        'assets/quotesData.json',
+        'assets/quotesData2.json',
       );
       final List<dynamic> jsonData = json.decode(jsonString);
 

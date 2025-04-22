@@ -25,17 +25,18 @@ final ThemeData lightTheme = ThemeData(
 final ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   appBarTheme: const AppBarTheme(
-    backgroundColor: Color(0xff0600c2),
-    titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
+    backgroundColor: Color(0xff636e72),
+    titleTextStyle: TextStyle(color: Color(0xffdfe6e9), fontSize: 20),
   ),
   colorScheme: ColorScheme.dark(
-    primary: Colors.white60,
-    primaryContainer: Color(0xff0600c2),
-    secondary: Colors.white,
-    onSecondary: Colors.black,
-    tertiary: Color(0xff0600c2),
+    primary: Color(0xff0984e3),
+    onPrimary: Color(0xff636e72),
+    primaryContainer: Color(0xff00b894),
+    secondary: Color(0xffd63031),
+    onSecondary: Color(0xffdfe6e9),
+    tertiary: Color(0xff0984e3),
     onTertiary: Colors.white,
-    surface: Color(0xff020024),
+    surface: Color(0xff2d3436),
     onSurface: Colors.white,
   ),
 );
