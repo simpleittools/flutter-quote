@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_quote/core/utils/platform_utils.dart';
 import 'package:flutter_quote/viewModels/quote_view_model.dart';
 import 'package:flutter_quote/views/widgets/quote_container_widget.dart';
@@ -121,7 +122,11 @@ class _HomeViewState extends State<HomeView> {
                                   : theme.colorScheme.onTertiary,
                         ),
                         onPressed: () {
-                          exit(0);
+                          if (PlatformUtils.isMobile()) {
+                            SystemNavigator.pop();
+                          } else {
+                            exit(0);
+                          }
                         },
                         child: Text('Quit'),
                       ),
