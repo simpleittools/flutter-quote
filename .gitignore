@@ -43,5 +43,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-/flutter_quote_0.1_amd64
+
+# release data
+/flutter_quote_*_amd64
 *.deb
