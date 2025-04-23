@@ -92,7 +92,7 @@ class _HomeViewState extends State<HomeView> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
                             isDark
-                                ? theme.colorScheme.primaryContainer
+                                ? theme.colorScheme.primary
                                 : theme.colorScheme.primary,
                         foregroundColor:
                             isDark

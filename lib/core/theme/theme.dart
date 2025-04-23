@@ -4,11 +4,11 @@ final ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   appBarTheme: const AppBarTheme(
     // TODO: change the colors to use the colorScheme
-    backgroundColor: Colors.blueAccent,
+    backgroundColor: Color(0xff0984e3),
     titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
   ),
   colorScheme: ColorScheme.light(
-    primary: Color(0xff74b9ff),
+    primary: Color(0xff0984e3),
     onPrimary: Color(0xffdfe6e9),
     primaryContainer: Color(0xff55efc4),
     secondary: Color(0xffffeaa7),
