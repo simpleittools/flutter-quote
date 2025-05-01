@@ -47,3 +47,5 @@ app.*.map.json
 # release data
 /flutter_quote_*_amd64
 *.deb
+*.exe
+*.ps1
