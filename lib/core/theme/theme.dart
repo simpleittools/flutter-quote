@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 final ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   appBarTheme: const AppBarTheme(
-    // TODO: change the colors to use the colorScheme
     backgroundColor: Color(0xff0984e3),
     titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
   ),
